@@ -4,11 +4,11 @@ import InputArea from "./InputArea";
 import WaitingArea from "./WaitingArea";
 import ShopArea from "./ShopArea";
 import { InputData } from "../model/InputData";
+import { GuestArray } from "../model/GuestArray";
 
 // material UI
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 const MainPage: FC = () => {
     const [inputData, setInputData] = useState<InputData>({
@@ -16,6 +16,15 @@ const MainPage: FC = () => {
         numberOfPeople: 0,
         table: "",
     });
+
+    const [waitingGuests, setWaitingGuests] = useState<GuestArray>({
+        guests: [],
+    });
+
+    const [eatingGuests, setEatingGuests] = useState<GuestArray>({
+        guests: [],
+    });
+
     const handleTextChange = (event: ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = event.target;
         setInputData({ ...inputData, [name]: value });
