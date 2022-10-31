@@ -10,13 +10,13 @@ const InputArea: FC = () => {
             direction={"row"}
             component="form"
             sx={{
-                "& .MuiTextField-root": { m: 1, width: "25ch" },
+                "& .MuiTextField-root": { m: 2, width: "25ch" },
             }}
             autoComplete="off"
             justifyContent="center"
             alignItems="center"
         >
-            <TextField required label="お名前" />
+            <TextField required label="名前" />
             <TextField
                 label="人数"
                 type="number"

@@ -6,6 +6,7 @@ import ShopArea from "./ShopArea";
 
 // material UI
 import Grid from "@mui/material/Grid";
+import Divider from "@mui/material/Divider";
 
 const MainPage: FC = () => {
     return (
@@ -16,9 +17,11 @@ const MainPage: FC = () => {
             <Grid item>
                 <InputArea />
             </Grid>
+            <Divider flexItem />
             <Grid item>
                 <WaitingArea />
             </Grid>
+            <Divider flexItem />
             <Grid item>
                 <ShopArea />
             </Grid>
