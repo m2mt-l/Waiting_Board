@@ -1,13 +1,20 @@
-import React, { FC } from "react";
+import React, { ChangeEvent, FC, useState } from "react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import MenuItem from "@mui/material/MenuItem";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 import { table } from "../data/table";
+import { InputData } from "../model/InputData";
 
-const InputArea: FC = () => {
+const InputArea: FC<{
+    handleTextChange: (event: ChangeEvent<HTMLInputElement>) => void;
+    props: InputData;
+}> = ({ handleTextChange, props }) => {
+    const defaultString = "";
+
     return (
         <Stack
             direction={"row"}
@@ -19,7 +26,13 @@ const InputArea: FC = () => {
             justifyContent="center"
             alignItems="center"
         >
-            <TextField required label="名前" size="small" />
+            <TextField
+                required
+                label="名前"
+                size="small"
+                name="customerName"
+                onChange={handleTextChange}
+            />
             <TextField
                 label="人数"
                 type="number"
@@ -28,8 +41,16 @@ const InputArea: FC = () => {
                 }}
                 inputProps={{ max: 5, min: 0 }}
                 size="small"
+                name="numberOfPeople"
+                onChange={handleTextChange}
             />
-            <TextField select value="" size="small">
+            <TextField
+                select
+                size="small"
+                name="table"
+                onChange={handleTextChange}
+                defaultValue={defaultString}
+            >
                 {table.map((choice) => (
                     <MenuItem key={choice} value={choice}>
                         {choice}
