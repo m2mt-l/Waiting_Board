@@ -3,6 +3,9 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+import MenuItem from "@mui/material/MenuItem";
+
+import { table } from "../data/table";
 
 const InputArea: FC = () => {
     return (
@@ -16,7 +19,7 @@ const InputArea: FC = () => {
             justifyContent="center"
             alignItems="center"
         >
-            <TextField required label="名前" />
+            <TextField required label="名前" size="small" />
             <TextField
                 label="人数"
                 type="number"
@@ -24,8 +27,15 @@ const InputArea: FC = () => {
                     shrink: true,
                 }}
                 inputProps={{ max: 5, min: 0 }}
+                size="small"
             />
-            <TextField select value=""></TextField>
+            <TextField select value="" size="small">
+                {table.map((choice) => (
+                    <MenuItem key={choice} value={choice}>
+                        {choice}
+                    </MenuItem>
+                ))}
+            </TextField>
             <Button variant="contained" sx={{ m: 1, width: "20ch", minWidth: "20ch" }} size="large">
                 順番待ちをする
             </Button>
