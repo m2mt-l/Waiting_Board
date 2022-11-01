@@ -1,4 +1,6 @@
 import React, { ChangeEvent, FC, useState } from "react";
+import PropTypes from "prop-types";
+
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -14,6 +16,15 @@ const InputArea: FC<{
     props: InputData;
 }> = ({ handleTextChange, props }) => {
     const defaultString = "";
+    const propsInputData = props;
+
+    const isInvalidInputData = (): boolean => {
+        return (
+            propsInputData.customerName === "" ||
+            propsInputData.numberOfPeople === 0 ||
+            propsInputData.table === ""
+        );
+    };
 
     return (
         <Stack
@@ -57,9 +68,25 @@ const InputArea: FC<{
                     </MenuItem>
                 ))}
             </TextField>
-            <Button variant="contained" sx={{ m: 1, width: "20ch", minWidth: "20ch" }} size="large">
-                順番待ちをする
-            </Button>
+            {isInvalidInputData() ? (
+                <Button
+                    disabled
+                    variant="contained"
+                    sx={{ m: 1, width: "20ch", minWidth: "20ch" }}
+                    size="large"
+                >
+                    順番待ちをする
+                </Button>
+            ) : (
+                <Button
+                    disabled
+                    variant="contained"
+                    sx={{ m: 1, width: "20ch", minWidth: "20ch" }}
+                    size="large"
+                >
+                    順番待ちをする
+                </Button>
+            )}
         </Stack>
     );
 };
