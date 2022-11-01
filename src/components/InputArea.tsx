@@ -13,8 +13,9 @@ import { InputData } from "../model/InputData";
 
 const InputArea: FC<{
     handleTextChange: (event: ChangeEvent<HTMLInputElement>) => void;
+    addWaitingGuests: () => void;
     props: InputData;
-}> = ({ handleTextChange, props }) => {
+}> = ({ handleTextChange, addWaitingGuests, props }) => {
     const defaultString = "";
     const propsInputData = props;
 
@@ -79,10 +80,10 @@ const InputArea: FC<{
                 </Button>
             ) : (
                 <Button
-                    disabled
                     variant="contained"
                     sx={{ m: 1, width: "20ch", minWidth: "20ch" }}
                     size="large"
+                    onClick={addWaitingGuests}
                 >
                     順番待ちをする
                 </Button>

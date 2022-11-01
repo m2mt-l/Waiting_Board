@@ -31,13 +31,22 @@ const MainPage: FC = () => {
         console.log(inputData);
     };
 
+    const addWaitingGuests = (): void => {
+        waitingGuests.guests.push(inputData);
+        console.log(waitingGuests.guests);
+    };
+
     return (
         <Grid container spacing={2} direction="column" justifyContent="center" alignItems="center">
             <Grid item>
                 <Header />
             </Grid>
             <Grid item>
-                <InputArea handleTextChange={handleTextChange} props={inputData} />
+                <InputArea
+                    handleTextChange={handleTextChange}
+                    addWaitingGuests={addWaitingGuests}
+                    props={inputData}
+                />
             </Grid>
             <Divider flexItem />
             <Grid item>
