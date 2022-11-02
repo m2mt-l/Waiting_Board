@@ -4,7 +4,6 @@ import InputArea from "./InputArea";
 import WaitingArea from "./WaitingArea";
 import ShopArea from "./ShopArea";
 import { InputData } from "../model/InputData";
-import { GuestArray } from "../model/GuestArray";
 
 // material UI
 import Grid from "@mui/material/Grid";
@@ -17,13 +16,9 @@ const MainPage: FC = () => {
         table: "",
     });
 
-    const [waitingGuests, setWaitingGuests] = useState<GuestArray>({
-        guests: [],
-    });
+    const [waitingGuests, setWaitingGuests] = useState<InputData[]>([]);
 
-    const [eatingGuests, setEatingGuests] = useState<GuestArray>({
-        guests: [],
-    });
+    const [eatingGuests, setEatingGuests] = useState<InputData[]>([]);
 
     const handleTextChange = (event: ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = event.target;
@@ -32,8 +27,8 @@ const MainPage: FC = () => {
     };
 
     const addWaitingGuests = (): void => {
-        waitingGuests.guests.push(inputData);
-        console.log(waitingGuests.guests);
+        setWaitingGuests([...waitingGuests, inputData]);
+        console.log(waitingGuests);
     };
 
     return (
@@ -50,7 +45,7 @@ const MainPage: FC = () => {
             </Grid>
             <Divider flexItem />
             <Grid item>
-                <WaitingArea />
+                <WaitingArea props={waitingGuests} />
             </Grid>
             <Divider flexItem />
             <Grid item>
