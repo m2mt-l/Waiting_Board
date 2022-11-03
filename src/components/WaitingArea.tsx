@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { MouseEvent, FC } from "react";
 
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -9,8 +9,44 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 
-const WaitingArea: FC = () => {
+import { InputData } from "../model/InputData";
+
+const WaitingArea: FC<{
+    deleteWaitingGuests: (event: MouseEvent<HTMLElement>) => void;
+    addServingGuests: (event: MouseEvent<HTMLElement>) => void;
+    props: InputData[];
+}> = ({ deleteWaitingGuests, addServingGuests, props }) => {
+    const propsWaitingGuests = props;
+    const renderWaitingGuests = propsWaitingGuests.map((waitingGuest, index) => (
+        <TableRow key={index} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
+            <TableCell align="center">{waitingGuest.customerName}</TableCell>
+            <TableCell align="center">{waitingGuest.numberOfPeople}</TableCell>
+            <TableCell align="center">{waitingGuest.table}</TableCell>
+            <TableCell align="center">
+                <Button
+                    id={index.toString()}
+                    sx={{ width: 150 }}
+                    variant="outlined"
+                    onClick={deleteWaitingGuests}
+                >
+                    取り消し
+                </Button>
+            </TableCell>
+            <TableCell align="center">
+                <Button
+                    id={index.toString()}
+                    sx={{ width: 100 }}
+                    variant="outlined"
+                    onClick={addServingGuests}
+                >
+                    案内
+                </Button>
+            </TableCell>
+        </TableRow>
+    ));
+
     return (
         <Box>
             <Typography variant="h5" my={1} component="div">
@@ -27,6 +63,7 @@ const WaitingArea: FC = () => {
                             <TableCell align="right"></TableCell>
                         </TableRow>
                     </TableHead>
+                    <TableBody>{renderWaitingGuests}</TableBody>
                 </Table>
             </TableContainer>
         </Box>
