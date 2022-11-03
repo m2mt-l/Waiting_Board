@@ -46,6 +46,14 @@ const MainPage: FC = () => {
         deleteWaitingGuests(event);
     };
 
+    const deleteServingGuests = (event: MouseEvent<HTMLElement>): void => {
+        const target = event.target as HTMLElement;
+        const targetIndex = parseInt(target.id);
+        // console.log(target.id);
+        setServingGuests(servingGuests.filter((servingGuest, index) => index !== targetIndex));
+        console.log(servingGuests);
+    };
+
     return (
         <Grid container spacing={2} direction="column" justifyContent="center" alignItems="center">
             <Grid item>
@@ -68,7 +76,7 @@ const MainPage: FC = () => {
             </Grid>
             <Divider flexItem />
             <Grid item>
-                <ShopArea props={servingGuests} />
+                <ShopArea deleteServingGuests={deleteServingGuests} props={servingGuests} />
             </Grid>
         </Grid>
     );
