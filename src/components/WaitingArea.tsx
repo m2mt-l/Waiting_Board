@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { MouseEvent, FC } from "react";
 
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -13,7 +13,10 @@ import Button from "@mui/material/Button";
 
 import { InputData } from "../model/InputData";
 
-const WaitingArea: FC<{ props: InputData[] }> = ({ props }) => {
+const WaitingArea: FC<{
+    deleteWaitingGuests: (event: MouseEvent<HTMLElement>) => void;
+    props: InputData[];
+}> = ({ deleteWaitingGuests, props }) => {
     const propsWaitingGuests = props;
     const renderWaitingGuests = propsWaitingGuests.map((waitingGuest, index) => (
         <TableRow key={index} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
@@ -21,7 +24,12 @@ const WaitingArea: FC<{ props: InputData[] }> = ({ props }) => {
             <TableCell align="center">{waitingGuest.numberOfPeople}</TableCell>
             <TableCell align="center">{waitingGuest.table}</TableCell>
             <TableCell align="center">
-                <Button sx={{ width: 150 }} variant="outlined">
+                <Button
+                    id={index.toString()}
+                    sx={{ width: 150 }}
+                    variant="outlined"
+                    onClick={deleteWaitingGuests}
+                >
                     取り消し
                 </Button>
             </TableCell>
