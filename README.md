@@ -2,6 +2,10 @@
 
 This project is for Recursion React project.
 
+## URL
+
+https://m2mt-l-waiting-board.netlify.app/
+
 ## Available Scripts
 
 In the project directory, you can run:
