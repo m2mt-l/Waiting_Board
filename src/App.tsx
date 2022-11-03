@@ -1,10 +1,10 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Main from "./components/Main";
+import MainPage from "./components/MainPage";
 
 const App: React.FunctionComponent = () => {
-    return <Main />;
+    return <MainPage />;
 };
 
 export default App;
