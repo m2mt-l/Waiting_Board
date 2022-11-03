@@ -5,7 +5,7 @@ import WaitingArea from "./WaitingArea";
 import ShopArea from "./ShopArea";
 import { InputData } from "../model/InputData";
 
-// material UI
+// Material UI
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
 
@@ -23,7 +23,7 @@ const MainPage: FC = () => {
     const handleTextChange = (event: ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = event.target;
         setInputData({ ...inputData, [name]: value });
-        console.log(inputData);
+        // console.log(inputData);
     };
 
     const addWaitingGuests = (): void => {
@@ -50,7 +50,7 @@ const MainPage: FC = () => {
         const targetIndex = parseInt(target.id);
         // console.log(target.id);
         setServingGuests(servingGuests.filter((servingGuest, index) => index !== targetIndex));
-        console.log(servingGuests);
+        // console.log(servingGuests);
     };
 
     return (
