@@ -1,12 +1,9 @@
-import React, { ChangeEvent, FC, useState } from "react";
-import PropTypes from "prop-types";
+import React, { ChangeEvent, FC } from "react";
 
-import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import MenuItem from "@mui/material/MenuItem";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 import { table } from "../data/table";
 import { InputData } from "../model/InputData";
