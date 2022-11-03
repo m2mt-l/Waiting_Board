@@ -8,7 +8,6 @@ import { InputData } from "../model/InputData";
 // material UI
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
-import { TransgenderTwoTone } from "@mui/icons-material";
 
 const MainPage: FC = () => {
     const [inputData, setInputData] = useState<InputData>({
