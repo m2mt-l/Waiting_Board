@@ -15,8 +15,9 @@ import { InputData } from "../model/InputData";
 
 const WaitingArea: FC<{
     deleteWaitingGuests: (event: MouseEvent<HTMLElement>) => void;
+    addServingGuests: (event: MouseEvent<HTMLElement>) => void;
     props: InputData[];
-}> = ({ deleteWaitingGuests, props }) => {
+}> = ({ deleteWaitingGuests, addServingGuests, props }) => {
     const propsWaitingGuests = props;
     const renderWaitingGuests = propsWaitingGuests.map((waitingGuest, index) => (
         <TableRow key={index} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
@@ -34,7 +35,12 @@ const WaitingArea: FC<{
                 </Button>
             </TableCell>
             <TableCell align="center">
-                <Button sx={{ width: 100 }} variant="outlined">
+                <Button
+                    id={index.toString()}
+                    sx={{ width: 100 }}
+                    variant="outlined"
+                    onClick={addServingGuests}
+                >
                     案内
                 </Button>
             </TableCell>

@@ -51,7 +51,7 @@ const InputArea: FC<{
                 InputLabelProps={{
                     shrink: true,
                 }}
-                inputProps={{ max: 5, min: 0 }}
+                inputProps={{ max: 5, min: 1 }}
                 size="small"
                 name="numberOfPeople"
                 onChange={handleTextChange}

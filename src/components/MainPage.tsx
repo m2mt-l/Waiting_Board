@@ -19,7 +19,7 @@ const MainPage: FC = () => {
 
     const [waitingGuests, setWaitingGuests] = useState<InputData[]>([]);
 
-    const [eatingGuests, setEatingGuests] = useState<InputData[]>([]);
+    const [servingGuests, setServingGuests] = useState<InputData[]>([]);
 
     const handleTextChange = (event: ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = event.target;
@@ -29,15 +29,21 @@ const MainPage: FC = () => {
 
     const addWaitingGuests = (): void => {
         setWaitingGuests([...waitingGuests, inputData]);
-        console.log(waitingGuests);
     };
 
     const deleteWaitingGuests = (event: MouseEvent<HTMLElement>): void => {
         const target = event.target as HTMLElement;
-        console.log(target.id);
-        setWaitingGuests(
-            waitingGuests.filter((waitingGuest, index) => index !== parseInt(target.id)),
-        );
+        const targetIndex = parseInt(target.id);
+        // console.log(target.id);
+        setWaitingGuests(waitingGuests.filter((waitingGuest, index) => index !== targetIndex));
+    };
+
+    const addServingGuests = (event: MouseEvent<HTMLElement>): void => {
+        const target = event.target as HTMLElement;
+        const targetIndex = parseInt(target.id);
+        const targetGuest = Object.assign(waitingGuests[targetIndex]);
+        setServingGuests([...servingGuests, targetGuest]);
+        deleteWaitingGuests(event);
     };
 
     return (
@@ -54,11 +60,15 @@ const MainPage: FC = () => {
             </Grid>
             <Divider flexItem />
             <Grid item>
-                <WaitingArea deleteWaitingGuests={deleteWaitingGuests} props={waitingGuests} />
+                <WaitingArea
+                    deleteWaitingGuests={deleteWaitingGuests}
+                    addServingGuests={addServingGuests}
+                    props={waitingGuests}
+                />
             </Grid>
             <Divider flexItem />
             <Grid item>
-                <ShopArea />
+                <ShopArea props={servingGuests} />
             </Grid>
         </Grid>
     );
