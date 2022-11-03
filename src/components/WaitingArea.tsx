@@ -21,10 +21,16 @@ const WaitingArea: FC<{
     const propsWaitingGuests = props;
     const renderWaitingGuests = propsWaitingGuests.map((waitingGuest, index) => (
         <TableRow key={index} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-            <TableCell align="center">{waitingGuest.customerName}</TableCell>
-            <TableCell align="center">{waitingGuest.numberOfPeople}</TableCell>
-            <TableCell align="center">{waitingGuest.table}</TableCell>
-            <TableCell align="center">
+            <TableCell sx={{ width: 150 }} align="center">
+                {waitingGuest.customerName}
+            </TableCell>
+            <TableCell sx={{ width: 150 }} align="center">
+                {waitingGuest.numberOfPeople}
+            </TableCell>
+            <TableCell sx={{ width: 150 }} align="center">
+                {waitingGuest.table}
+            </TableCell>
+            <TableCell sx={{ width: 150 }} align="center">
                 <Button
                     id={index.toString()}
                     sx={{ width: 150 }}
@@ -34,7 +40,7 @@ const WaitingArea: FC<{
                     取り消し
                 </Button>
             </TableCell>
-            <TableCell align="center">
+            <TableCell sx={{ width: 150 }} align="center">
                 <Button
                     id={index.toString()}
                     sx={{ width: 100 }}
@@ -48,7 +54,7 @@ const WaitingArea: FC<{
     ));
 
     return (
-        <Box>
+        <Box sx={{ mb: 2 }}>
             <Typography variant="h5" my={1} component="div">
                 順番待ち
             </Typography>
@@ -56,11 +62,17 @@ const WaitingArea: FC<{
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>名前</TableCell>
-                            <TableCell align="right">人数</TableCell>
-                            <TableCell align="right">席</TableCell>
-                            <TableCell align="right"></TableCell>
-                            <TableCell align="right"></TableCell>
+                            <TableCell sx={{ width: 150 }} align="center">
+                                名前
+                            </TableCell>
+                            <TableCell sx={{ width: 150 }} align="center">
+                                人数
+                            </TableCell>
+                            <TableCell sx={{ width: 150 }} align="center">
+                                席
+                            </TableCell>
+                            <TableCell sx={{ width: 150 }} align="center"></TableCell>
+                            <TableCell sx={{ width: 150 }} align="center"></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>{renderWaitingGuests}</TableBody>
