@@ -54,7 +54,7 @@ const WaitingArea: FC<{
     ));
 
     return (
-        <Box>
+        <Box sx={{ mb: 2 }}>
             <Typography variant="h5" my={1} component="div">
                 順番待ち
             </Typography>

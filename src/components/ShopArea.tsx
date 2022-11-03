@@ -19,10 +19,16 @@ const ShopArea: FC<{
     const propsServingGuests = props;
     const renderServingGuests = propsServingGuests.map((servingGuest, index) => (
         <TableRow key={index} sx={{ "&:last-child td, &:last-child th": { border: 0 } }}>
-            <TableCell align="center">{servingGuest.customerName}</TableCell>
-            <TableCell align="center">{servingGuest.numberOfPeople}</TableCell>
-            <TableCell align="center">{servingGuest.table}</TableCell>
-            <TableCell align="center">
+            <TableCell sx={{ width: 150 }} align="center">
+                {servingGuest.customerName}
+            </TableCell>
+            <TableCell sx={{ width: 150 }} align="center">
+                {servingGuest.numberOfPeople}
+            </TableCell>
+            <TableCell sx={{ width: 150 }} align="center">
+                {servingGuest.table}
+            </TableCell>
+            <TableCell sx={{ width: 150 }} align="center">
                 <Button
                     id={index.toString()}
                     sx={{ width: 150 }}
@@ -44,11 +50,17 @@ const ShopArea: FC<{
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>名前</TableCell>
-                            <TableCell align="right">人数</TableCell>
-                            <TableCell align="right">席</TableCell>
-                            <TableCell align="right"></TableCell>
-                            <TableCell align="right"></TableCell>
+                            <TableCell sx={{ width: 150 }} align="center">
+                                名前
+                            </TableCell>
+                            <TableCell sx={{ width: 150 }} align="center">
+                                人数
+                            </TableCell>
+                            <TableCell sx={{ width: 150 }} align="center">
+                                席
+                            </TableCell>
+                            <TableCell sx={{ width: 150 }} align="center"></TableCell>
+                            <TableCell sx={{ width: 150 }} align="center"></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>{renderServingGuests}</TableBody>
